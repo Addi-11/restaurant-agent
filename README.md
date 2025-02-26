@@ -57,6 +57,7 @@ input ->intent classification -> information extraction ->(based on confidence) 
 - Support voice input in later versions
 - Personalization based on past interactions
 - Other language integration
+- SQL knowledge base for tool calling
 
 #### Future Required Integrations
 - Restaurant Database APIs (Menus, Reservations, Availability)
@@ -80,3 +81,5 @@ input ->intent classification -> information extraction ->(based on confidence) 
 - Each query takes some time to process by the model.
 - Text generation model has limitation with token generated, or detecing <EOS>. Instruction tuned model for chat will give better results. Current Agent requires a lot of regex filtering of the model output.
 - Powerful model can classify the query intent, and the search intent with much more accuracy.
+- Recommendation criteria is woozy,
+- Data model limitations, need sql for better query generation, right now json doesnt look elegant
