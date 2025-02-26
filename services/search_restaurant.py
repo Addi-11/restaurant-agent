@@ -59,23 +59,25 @@ class SearchRestaurantService:
     def filter_restaurants(self, criteria: SearchCriteria) -> List[dict]:
         results = []
         for restaurant in restaurant_kb:
-            match = True
+            matched = False
+            
             if criteria.cuisine:
-                if criteria.cuisine.lower() not in restaurant.get("cuisine", "").lower():
-                    match = False
+                if criteria.cuisine.lower() in restaurant.get("cuisine", "").lower():
+                    matched = True
             
             if criteria.location:
-                if criteria.location.lower() not in restaurant.get("location", "").lower():
-                    match = False
+                if criteria.location.lower() in restaurant.get("location", "").lower():
+                    matched = True
             
             if criteria.ambience:
-                if criteria.ambience.lower() not in restaurant.get("ambience", "").lower():
-                    match = False
+                if criteria.ambience.lower() in restaurant.get("ambience", "").lower():
+                    matched = True
             
-            # TODO: Add addtional filtering criteria for price range
-            if match:
+            if matched:
                 results.append(restaurant)
+        
         return results
+
 
     def process_request(self, user_message: str) -> SearchRestaurantResponse:
 
