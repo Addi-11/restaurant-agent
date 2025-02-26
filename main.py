@@ -33,7 +33,7 @@ def detect_intent(user_message):
         return intent
 
 
-def process(user_message):
+def process_chat(user_message):
     intent = detect_intent(user_message)
     service = INTENT_TO_SERVICE[intent]()
     return service.process_request(user_message)
