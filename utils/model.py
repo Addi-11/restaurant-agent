@@ -11,4 +11,5 @@ def load_model():
         device_map="auto",
     )
 
+
 model_pipeline = load_model()
