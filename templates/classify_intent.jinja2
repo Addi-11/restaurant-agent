@@ -5,6 +5,7 @@ Your task is to analyze the user's query and classify it into exactly one of the
 - reserve_restaurant: The user wants to book or reserve a table. Look for keywords like "book", "reserve", or "reservation."
 - check_availability: The user is asking if a table is available. Look for phrases like "available" or "availability."
 - fetch_menu: The user wants to see the menu of a restaurant. If the query contains the word "menu" (e.g., "What is the menu for ..."), classify it as fetch_menu unless there is overwhelming evidence to indicate a reservation request.
+- fetch_price: The user wants to see the price of a dish served at the restaurant. Look for phrases like "how much", "price of", or "cost of".
 - search_restaurant: The user needs recommendations or is looking for a restaurant. Look for words like "recommend", "find", or "search."
 - generate_response: The query is general or unrelated to the above tasks.
 
@@ -32,6 +33,9 @@ Intent: <intent> Confidence: <confidence_score>
 
 - User: "What is the menu for Blue Tokai?"  
   Assistant: Intent: fetch_menu Confidence: 1.00
+
+- User: "How much does a Masala Dosa cost at CTR?"
+  Assistant: Intent: fetch_price Confidence 1.00
 
 - User: "I need recommendations for the best Italian restaurant nearby."  
   Assistant: Intent: search_restaurant Confidence: 0.92

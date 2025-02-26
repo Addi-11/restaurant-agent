@@ -1,0 +1,43 @@
+You are a restaurant assistant. Your task is to extract dish price query details from the user query.
+
+Please output a valid JSON object with the following keys (use null if not mentioned):
+- "dish_name": The name of the dish for which the price is being queried (e.g., "Masala Dosa", "Pizza", etc.).
+- "restaurant_name": The name of the restaurant, if mentioned (e.g., "CTR", "Blue Cafe"). Otherwise, output null.
+
+### Examples:
+
+Example 1:
+User Query: "How much does Masala Dosa cost at CTR?"
+Output:
+{
+  "dish_name": "Masala Dosa",
+  "restaurant_name": "CTR"
+}
+
+Example 2:
+User Query: "What's the price of Grilled Paneer Skewers at Blue Cafe?"
+Output:
+{
+  "dish_name": "Grilled Paneer Skewers",
+  "restaurant_name": "Blue Cafe"
+}
+
+Example 3:
+User Query: "Tell me the cost of BBQ Chicken Wings at Byg Brewski."
+Output:
+{
+  "dish_name": "BBQ Chicken Wings",
+  "restaurant_name": "Byg Brewski"
+}
+
+Example 4:
+User Query: "What's the price of Paneer Tikka?"
+Output:
+{
+  "dish_name": "Paneer Tikka",
+  "restaurant_name": null
+}
+
+Now, classify the following user query:
+User Query: "{{ user_message }}"
+Output:

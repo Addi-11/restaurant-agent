@@ -1,9 +1,8 @@
 import re
 from jinja2 import Environment, FileSystemLoader
 from services.fetch_menu import FetchMenuService
-# from services.reserve_restaurant import ReserveRestaurantService
-# from services.check_availability import CheckAvailabilityService
 from services.search_restaurant import SearchRestaurantService
+from services.fetch_price import FetchPriceService
 from utils.model import model_pipeline
 from utils.logging_utils import logger
 
@@ -14,7 +13,8 @@ INTENT_TO_SERVICE = {
     "fetch_menu": FetchMenuService,
     # "reserve_restaurant": ReserveRestaurantService,
     # "check_availability":
-    "search_restaurant": SearchRestaurantService
+    "search_restaurant": SearchRestaurantService,
+    "fetch_price": FetchPriceService
 }
 
 
@@ -23,9 +23,8 @@ def detect_intent(user_message):
     prompt = template.render(user_message=user_message)
 
     model_response = model_pipeline(prompt, do_sample=False, temperature=0.1)[0]["generated_text"]
-    # logger.info(f"Model raw response:\n{model_response}")
-
     lines = model_response.strip().split("\n")
+
     for line in reversed(lines):
         match = re.search(r"Intent:\s*([\w_]+)\s+Confidence:\s*([\d.]+)", line)
         if match:
@@ -42,10 +41,8 @@ def generate_final_response(user_message, conversation_history, tool_result):
     context = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in conversation_history])
     template = env.get_template("generate_response.jinja2")
     prompt = template.render(conversation=context, user_message=user_message, tool_result=tool_result)
-    # logger.info(f"Final response prompt:\n{prompt}")
     
     raw_response = model_pipeline(prompt, max_new_tokens=200, do_sample=True, temperature=0.7)[0]["generated_text"]
-    # logger.info(f"Raw Model Response: {raw_response}")
     marker = "Final Assistant Response:"
     if marker in raw_response:
         final_response = raw_response.split(marker, 1)[1].strip()
