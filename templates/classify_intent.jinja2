@@ -16,31 +16,26 @@ When you receive a user query, analyze the query and classify it into exactly on
 
 Intent: <intent> Confidence: <confidence_score>
 
-For example, if the model is very sure the query is about viewing a menu, it might output:
-
-Intent: fetch_menu Confidence: 1.00
-
-
 **Examples:**
 
 - User: "Can I book a table for two at Olive Bistro for tomorrow at 7 PM?"  
-  Output: Intent: reserve_restaurant Confidence: 0.95
+  Assistant: Intent: reserve_restaurant Confidence: 0.95
 
 - User: "Is there a table available at The Grill House at 8 PM tonight?"  
-  Output: Intent: check_availability Confidence: 0.90
+  Assistant: Intent: check_availability Confidence: 0.90
 
 - User: "Show me the menu of Urban Tandoor."  
-  Output: Intent: fetch_menu Confidence: 1.00
+  Assistant: Intent: fetch_menu Confidence: 1.00
 
 - User: "What is the menu for Blue Tokai?"  
-  Output: Intent: fetch_menu Confidence: 1.00
+  Assistant: Intent: fetch_menu Confidence: 1.00
 
 - User: "I need recommendations for the best Italian restaurant nearby."  
-  Output: Intent: search_restaurant Confidence: 0.92
+  Assistant: Intent: search_restaurant Confidence: 0.92
 
 - User: "Tell me a joke about food!"  
-  Output: Intent: generate_response Confidence: 0.85
+  Assistant: Intent: generate_response Confidence: 0.85
 
 Now, classify the following user query:
 - User: {{ user_message }}
-  Output: Intent:
+  Assistant: Intent:

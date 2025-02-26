@@ -45,16 +45,17 @@ class FetchMenuService:
         prompt = template.render(user_message=user_message)
 
         model_response = model_pipeline(prompt)[0]["generated_text"]
+        print(model_response)
 
         matches = re.findall(
-            r"Response:\s*(.+?)\s*\(confidence:\s*([\d.]+)\)", model_response
+            r"Assistant:\s*(.+?)\s*\(confidence:\s*([\d.]+)\)", model_response
         )
         if matches:
             restaurant_name, confidence_score = matches[-1]
             confidence_score = float(confidence_score)
 
             logger.info(
-                f"Extracted Intent: {restaurant_name}, Confidence: {confidence_score}"
+                f"Extracted Restaurant Name: {restaurant_name}, Confidence: {confidence_score}"
             )
 
             return ModelMenuResponse(
@@ -66,8 +67,8 @@ class FetchMenuService:
         )
 
     @classmethod
-    def process_request(self, req):
-        model_response = self.call_model(req)
+    def process_request(self, user_message):
+        model_response = self.call_model(user_message)
 
         if model_response.error:
             return {"error": model_response.error}
