@@ -77,3 +77,6 @@ input ->intent classification -> information extraction ->(based on confidence) 
 - Spelling mistakes not tolerated for query searches
 - Restaurant names must be exact, including "The" or numbers (e.g., "The Grill House" is different from "Grill House")
 - Context retention limited to short-term memory (improving over time with training)
+- Each query takes some time to process by the model.
+- Text generation model has limitation with token generated, or detecing <EOS>. Instruction tuned model for chat will give better results. Current Agent requires a lot of regex filtering of the model output.
+- Powerful model can classify the query intent, and the search intent with much more accuracy.
