@@ -1,0 +1,93 @@
+[
+    {
+      "restaurant_id": "R001",
+      "name": "Toit",
+      "location": "Indiranagar",
+      "ambience": "indoor",
+      "cuisine": "Italian, Continental",
+      "is_veg": false,
+      "seating_capacity": 150
+    },
+    {
+      "restaurant_id": "R002",
+      "name": "CTR (Central Tiffin Room)",
+      "location": "Malleshwaram",
+      "ambience": "indoor",
+      "cuisine": "South Indian",
+      "is_veg": true,
+      "seating_capacity": 50
+    },
+    {
+      "restaurant_id": "R003",
+      "name": "Truffles",
+      "location": "Koramangala",
+      "ambience": "indoor",
+      "cuisine": "American, Fast Food",
+      "is_veg": false,
+      "seating_capacity": 100
+    },
+    {
+      "restaurant_id": "R004",
+      "name": "The 13th Floor",
+      "location": "MG Road",
+      "ambience": "outdoor",
+      "cuisine": "Asian, North Indian",
+      "is_veg": false,
+      "seating_capacity": 120
+    },
+    {
+      "restaurant_id": "R005",
+      "name": "Vidyaranya Bhavan",
+      "location": "Gandhi Bazaar",
+      "ambience": "indoor",
+      "cuisine": "South Indian",
+      "is_veg": true,
+      "seating_capacity": 60
+    },
+    {
+      "restaurant_id": "R006",
+      "name": "The Fatty Bao",
+      "location": "Indiranagar",
+      "ambience": "indoor",
+      "cuisine": "Asian, Japanese",
+      "is_veg": false,
+      "seating_capacity": 80
+    },
+    {
+      "restaurant_id": "R007",
+      "name": "Karavalli",
+      "location": "Residency Road",
+      "ambience": "outdoor",
+      "cuisine": "Coastal, South Indian",
+      "is_veg": false,
+      "seating_capacity": 100
+    },
+    {
+      "restaurant_id": "R008",
+      "name": "MTR (Mavalli Tiffin Room)",
+      "location": "Lalbagh Road",
+      "ambience": "indoor",
+      "cuisine": "South Indian",
+      "is_veg": true,
+      "seating_capacity": 70
+    },
+    {
+      "restaurant_id": "R009",
+      "name": "Byg Brewski Brewing Company",
+      "location": "Hennur",
+      "ambience": "outdoor",
+      "cuisine": "Continental, Asian",
+      "is_veg": false,
+      "seating_capacity": 300
+    },
+    {
+      "restaurant_id": "R010",
+      "name": "Grasshopper",
+      "location": "Bannerghatta Road",
+      "ambience": "outdoor",
+      "cuisine": "European",
+      "is_veg": true,
+      "seating_capacity": 50
+    }
+  ]
+  

@@ -1,0 +1,203 @@
+[
+    {
+      "restaurant_id": "R001",
+      "menu": [
+        {
+          "dish_name": "Margherita Pizza",
+          "category": "Main Course",
+          "price": 450,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Penne Alfredo",
+          "category": "Main Course",
+          "price": 500,
+          "is_veg": false
+        },
+        {
+          "dish_name": "Garlic Bread",
+          "category": "Starter",
+          "price": 200,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Tiramisu",
+          "category": "Dessert",
+          "price": 350,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R002",
+      "menu": [
+        {
+          "dish_name": "Masala Dosa",
+          "category": "Main Course",
+          "price": 90,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Filter Coffee",
+          "category": "Beverage",
+          "price": 40,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Rava Idli",
+          "category": "Main Course",
+          "price": 80,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R003",
+      "menu": [
+        {
+          "dish_name": "Cheesy Chicken Burger",
+          "category": "Main Course",
+          "price": 320,
+          "is_veg": false
+        },
+        {
+          "dish_name": "French Fries",
+          "category": "Starter",
+          "price": 180,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Oreo Shake",
+          "category": "Beverage",
+          "price": 250,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R004",
+      "menu": [
+        {
+          "dish_name": "Chili Chicken",
+          "category": "Starter",
+          "price": 400,
+          "is_veg": false
+        },
+        {
+          "dish_name": "Paneer Tikka",
+          "category": "Starter",
+          "price": 350,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Mango Martini",
+          "category": "Beverage",
+          "price": 450,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R005",
+      "menu": [
+        {
+          "dish_name": "Set Dosa",
+          "category": "Main Course",
+          "price": 100,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Bisi Bele Bath",
+          "category": "Main Course",
+          "price": 120,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R006",
+      "menu": [
+        {
+          "dish_name": "Pork Bao",
+          "category": "Main Course",
+          "price": 450,
+          "is_veg": false
+        },
+        {
+          "dish_name": "Vegetable Sushi",
+          "category": "Starter",
+          "price": 400,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R007",
+      "menu": [
+        {
+          "dish_name": "Crab Ghee Roast",
+          "category": "Main Course",
+          "price": 700,
+          "is_veg": false
+        },
+        {
+          "dish_name": "Neer Dosa",
+          "category": "Main Course",
+          "price": 150,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R008",
+      "menu": [
+        {
+          "dish_name": "Rava Dosa",
+          "category": "Main Course",
+          "price": 120,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Badam Halwa",
+          "category": "Dessert",
+          "price": 180,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R009",
+      "menu": [
+        {
+          "dish_name": "BBQ Chicken Wings",
+          "category": "Starter",
+          "price": 480,
+          "is_veg": false
+        },
+        {
+          "dish_name": "Grilled Paneer Skewers",
+          "category": "Starter",
+          "price": 350,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R010",
+      "menu": [
+        {
+          "dish_name": "Mushroom Risotto",
+          "category": "Main Course",
+          "price": 550,
+          "is_veg": true
+        },
+        {
+          "dish_name": "Dark Chocolate Mousse",
+          "category": "Dessert",
+          "price": 400,
+          "is_veg": true
+        }
+      ]
+    }
+  ]
+  
