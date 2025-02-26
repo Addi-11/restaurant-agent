@@ -45,7 +45,6 @@ class FetchMenuService:
         prompt = template.render(user_message=user_message)
 
         model_response = model_pipeline(prompt)[0]["generated_text"]
-        print(model_response)
 
         matches = re.findall(
             r"Assistant:\s*(.+?)\s*\(confidence:\s*([\d.]+)\)", model_response

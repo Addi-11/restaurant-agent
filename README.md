@@ -28,6 +28,8 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 
 Make a mermaid diagram
 
+input ->intent classification -> information extraction ->(based on confidence) tool calling -> response generation
+
 ## Agent Features
 
 - Natural Language Processing for intent detection

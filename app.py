@@ -20,10 +20,11 @@ if user_message:
     with st.chat_message("user"):
         st.markdown(user_message)
 
-    response = process_chat(user_message)
+    response = process_chat(user_message, st.session_state.messages)
+    # formatted response to string
     assistant_response = (
         response if isinstance(response, str) else str(response)
-    )  # formatted response
+    )
 
     st.session_state.messages.append(
         {"role": "assistant", "content": assistant_response}
