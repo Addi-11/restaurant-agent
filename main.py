@@ -21,19 +21,22 @@ def detect_intent(user_message):
     template = env.get_template("classify_intent.jinja2")
     prompt = template.render(user_message=user_message)
 
-    model_response = model_pipeline(prompt)[0]["generated_text"]
-    logger.info(f"Model raw response: {model_response}")
-    match = re.search(r"Intent:\s*(\w+)\s+Confidence:\s*([\d.]+)", model_response)
+    model_response = model_pipeline(prompt, do_sample=False, temperature=0.1)[0]["generated_text"]
+    logger.info(f"Model raw response:\n{model_response}")
 
-    if match:
-        intent = match.group(1)
-        confidence = float(match.group(2))
-        logger.info(f"Extracted Intent: {intent}, Confidence: {confidence}")
-        if confidence > 0.7:
-            return intent
+    lines = model_response.strip().split("\n")
+    for line in reversed(lines):
+        match = re.search(r"Intent:\s*([\w_]+)\s+Confidence:\s*([\d.]+)", line)
+        if match:
+            intent = match.group(1)
+            confidence = float(match.group(2))
+            logger.info(f"Extracted Intent: {intent}, Confidence: {confidence}")
+            if confidence > 0.9:
+                return intent
 
-    logger.info("Switching to default intent.")
+    logger.info("Default Intent Extracted.")
     return "generate_reponse"
+
 
 
 def process_chat(user_message):
