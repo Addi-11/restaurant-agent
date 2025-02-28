@@ -21,6 +21,7 @@ class FetchPriceResponse(BaseModel):
 
 class FetchPriceService:
     
+    @staticmethod
     def extract_dish_query(user_message: str) -> Optional[PriceQuery]:
         template = env.get_template("fetch_price.jinja2")
         prompt = template.render(user_message=user_message)

@@ -26,9 +26,24 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 
 ### State Transition Diagram
 
-Make a mermaid diagram
+![alt text](images/agent-flow.png)
+### **Thought Process for Foodie Spot Agent**  
 
-input ->intent classification -> information extraction ->(based on confidence) tool calling -> response generation
+1. **Intent Classification:** LLM determines intent of user message(e.g., `reserve_restaurant`, `fetch_price`, `search_restaurant`).  
+
+6. **Prompt Routing & Parallelization:** Routes queries correctly based on intent.
+
+2. **Events Creation:**  Logs events like `intent_identified`, `tool_called`, `response_generated` for tracking.  
+
+3. **Response Format for Function Calling:** LLM outputs structured JSON with function name and parameters.  
+
+4. **Function Calling & Knowledge Base Lookup:** Calls appropriate tool (e.g., `fetch_price` tool) to retrieve structured data.  
+
+5. **Knowledge Base Search & Retrieval:** Searches and extracts exact or relaxed matches in restaurant data (menu, pricing, location).  
+
+6. **Final Response Generation:** LLM generates the final response using the information from the function and chat context.
+
+8. **TODO: Confirmation Generation:** Asks for user confirmation before final actions (e.g., booking a table).
 
 ## Agent Features
 
