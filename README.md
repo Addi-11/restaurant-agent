@@ -2,16 +2,12 @@
 ## Goal
 Build an intelligent restaurant assistant that can handle multi-turn conversations, process user queries, and interact with external tools (e.g., restaurant databases, reservation systems) to provide real-time information.
 
-### Long Term Goal
-Fully automated conversational agent.
-### Success Criteria
-- High accuracy in intent detection (above 90%)
-- Seamless tool integration for fetching menus, checking availability, and booking tables
-- Multi-turn context retention for better user experience
-- Minimal user corrections (spelling errors, vague queries should still work well)
-
 ## Use case
 Virtual concierge for FoodieSpot, helping customers find restaurants, check availability, fetch menus, and make reservations via a conversational interface. A user can interact through chat, ask about restaurants near them, browse menus, and book a table—all in a single, natural conversation flow. The agent will integrate with a restaurant database, maintain user preferences, and ensure real-time updates
+
+### State Transition Diagram
+
+![alt text](images/agent-flow.png)
 
 ### Key Steps (agent flow)
 
@@ -24,10 +20,7 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 7. If reservation needed, agent transitions to booking flow
 8. Booking confirmation & conversation closure
 
-### State Transition Diagram
-
-![alt text](images/agent-flow.png)
-### **Thought Process for Foodie Spot Agent**  
+### Thought Process for Foodie Spot Agent 
 
 1. **Intent Classification:** LLM determines intent of user message(e.g., `reserve_restaurant`, `fetch_price`, `search_restaurant`).  
 
@@ -64,7 +57,6 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 - Check table availability
 - Make a reservation
 
-
 #### Future Scope
 
 - Pluggable model support
@@ -79,9 +71,16 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 - CRM System (for user preferences & personalization)
 - Payment Gateway (future expansion)
 
+### Long Term Goal
+Fully automated conversational agent.
+
+### Success Criteria
+- High accuracy in intent detection (above 90%)
+- Seamless tool integration for fetching menus, checking availability, and booking tables
+- Multi-turn context retention for better user experience
+- Minimal user corrections (spelling errors, vague queries should still work well)
+
 ### Scale up / Rollout Strategy
-
-
 
 ### Key Future Challenges
 
