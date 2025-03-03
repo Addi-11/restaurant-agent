@@ -3,6 +3,8 @@ from jinja2 import Environment, FileSystemLoader
 from services.fetch_menu import FetchMenuService
 from services.search_restaurant import SearchRestaurantService
 from services.fetch_price import FetchPriceService
+from services.reserve_restaurant import ReserveRestaurantService
+from services.check_availability import CheckAvailabilityService
 from utils.model import model_pipeline
 from utils.logging_utils import logger
 
@@ -11,8 +13,8 @@ env = Environment(loader=FileSystemLoader("templates"))
 # INTENT-SERVICE MAPPING
 INTENT_TO_SERVICE = {
     "fetch_menu": FetchMenuService,
-    # "reserve_restaurant": ReserveRestaurantService,
-    # "check_availability":
+    "reserve_restaurant": ReserveRestaurantService,
+    "check_availability": CheckAvailabilityService,
     "search_restaurant": SearchRestaurantService,
     "fetch_price": FetchPriceService
 }

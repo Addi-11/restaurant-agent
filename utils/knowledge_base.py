@@ -1,6 +1,5 @@
 import json
 
-
 def load_restaurant_kb():
     with open("knowledge_base/restaurant_db.json", "r") as f:
         return json.load(f)
@@ -11,5 +10,10 @@ def load_menu_kb():
         return json.load(f)
 
 
+def load_reservation_kb():
+    with open("knowledge_base/reservations.json", "r") as f:
+        return json.load(f)
+
 restaurant_kb = load_restaurant_kb()
 menu_kb = load_menu_kb()
+reservation_kb = load_reservation_kb()

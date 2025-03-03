@@ -51,11 +51,13 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 - Location & Availability Data
 - Reservation System
 
-#### Tools required
+#### Tools required: Can be made better proper KB. 
 
 - Fetch menu
 - Check table availability
 - Make a reservation
+- Fetch price
+- Search restaurant
 
 #### Future Scope
 
@@ -64,7 +66,7 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 - Support voice input in later versions
 - Personalization based on past interactions
 - Other language integration
-- SQL knowledge base for tool calling
+- SQL knowledge base for proper tool calling.
 
 #### Future Required Integrations
 - Restaurant Database APIs (Menus, Reservations, Availability)
@@ -95,5 +97,7 @@ Fully automated conversational agent.
 - Each query takes some time to process by the model.
 - Text generation model has limitation with token generated, or detecing <EOS>. Instruction tuned model for chat will give better results. Current Agent requires a lot of regex filtering of the model output.
 - Powerful model can classify the query intent, and the search intent with much more accuracy.
-- Recommendation criteria is woozy,
+- Recommendation criteria is free formed, not tightly bound.
+- Reservation's are stored as json object, not updated in a DB (time constraints).
+- Availabily check needs proper DB, right now only a reservation json is checked.
 - Data model limitations, need sql for better query generation, right now json doesnt look elegant
