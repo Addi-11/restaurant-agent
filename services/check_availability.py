@@ -45,8 +45,10 @@ class CheckAvailabilityService:
             prompt, max_new_tokens=30, do_sample=False, temperature=0.1
         )[0]["generated_text"]
 
+        logger.info(f"Raw Model Output: {model_output}")
+
         try:
-            matches = re.findall(r"\{[\s\S]*?\}", model_output)
+            matches = re.findall(r"\{(?:[^{}]*|\"[^\"]*\"|\{(?:[^{}]*|\"[^\"]*\")*\})*\}", model_output)
             if not matches:
                 raise ValueError("No JSON object found in model output.")
 
@@ -65,8 +67,8 @@ class CheckAvailabilityService:
     ) -> AvailabilityResponse:
         requested_time = datetime.strptime(date_time, "%Y-%m-%d %H:%M")
 
-        # Assuming the restaurant has a max capacity of 50 per time slot
-        max_capacity = 50
+        # Assuming the restaurant has a max capacity of 10 per time slot
+        max_capacity = 10
         booked_seats = sum(
             res["num_people"]
             for res in self.reservations
@@ -119,19 +121,6 @@ class CheckAvailabilityService:
                 message=f"Please provide the {', '.join(missing_fields)} to check availability.",
             )
 
-        try:
-            formatted_date_time = datetime.strptime(
-                details.date_time, "%Y-%m-%d %H:%M"
-            ).strftime("%Y-%m-%d %H:%M")
-        except ValueError:
-            return AvailabilityResponse(
-                restaurant_name=details.restaurant_name,
-                date_time=details.date_time,
-                num_people=details.num_people,
-                available=False,
-                message="Invalid date format. Please use YYYY-MM-DD HH:MM.",
-            )
-
-        return self.check_availability(
-            details.restaurant_name, formatted_date_time, details.num_people
-        )
+        # return self.check_availability(
+        #     details.restaurant_name, formatted_date_time, details.num_people
+        # )

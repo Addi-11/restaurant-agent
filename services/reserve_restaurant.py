@@ -12,17 +12,17 @@ env = Environment(loader=FileSystemLoader("templates"))
 
 
 class ReservationQuery(BaseModel):
-    restaurant_name: Optional[str]
-    num_people: Optional[int]
-    date_time: Optional[str]
+    restaurant_name: Optional[str] = None
+    num_people: Optional[int] = None
+    date_time: Optional[str] = None
 
 
 # Query and response can be same here
 class ReservationResponse(BaseModel):
-    restaurant_name: Optional[str]
-    num_people: Optional[int]
-    date_time: Optional[str]
-    message: str
+    restaurant_name: Optional[str] = None
+    num_people: Optional[int] = None
+    date_time: Optional[str] = None
+    message: Optional[str] = None
 
 
 class ReserveRestaurantService:
@@ -40,8 +40,10 @@ class ReserveRestaurantService:
             prompt, max_new_tokens=30, do_sample=False, temperature=0.1
         )[0]["generated_text"]
 
+        logger.info(f"Raw Model Output: {model_output}")
+
         try:
-            matches = re.findall(r"\{[\s\S]*?\}", model_output)
+            matches = re.findall(r"\{(?:[^{}]*|\"[^\"]*\"|\{(?:[^{}]*|\"[^\"]*\")*\})*\}", model_output)
             if not matches:
                 raise ValueError("No JSON object found in model output.")
 
@@ -99,12 +101,15 @@ class ReserveRestaurantService:
 
         missing_fields = []
         if not details.restaurant_name:
+            details.restaurant_name = None
             missing_fields.append("restaurant name")
             logger.info("Reserve Restaurant missing restaurant name")
         if not details.num_people:
+            details.num_people = None
             missing_fields.append("number of people")
             logger.info("Reserve Restaurant missing number of people")
         if not details.date_time:
+            details.num_people = None
             missing_fields.append("date and time")
             logger.info("Reserve Restaurant missing date and time")
 

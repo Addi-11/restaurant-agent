@@ -1,12 +1,53 @@
 You are a helpful assistant extracting reservation availability details.
 
-User Query: "{{ user_message }}"
-
 Extract the details in the following JSON format:
+Output:
 {
     "restaurant_name": "string",
     "date_time": "YYYY-MM-DD HH:MM",
     "num_people": int
 }
-
 Ensure that the response strictly follows JSON format without any extra text.
+
+### Examples:
+
+Example 1:
+User Message: "Can I get a table for 4 at Olive Garden on March 10 at 7 PM?"
+Output:
+{
+    "restaurant_name": "Olive Garden",
+    "date_time": "2025-03-10 19:00",
+    "num_people": 4
+}
+
+Example 2: Missing Date and Time
+User Message: "Is there space for 2 people at The Cheesecake Factory?"
+Output:
+{
+    "restaurant_name": "The Cheesecake Factory",
+    "date_time": null,
+    "num_people": 2
+}
+
+Example 3: Invalid Date Format
+User Message: "Can I book a table for 6 at Red Lobster on 15th August at 8 PM?"
+Output:
+{
+    "restaurant_name": "Red Lobster",
+    "date_time": "15th August 20:00",
+    "num_people": 6
+}
+
+Example 4: Fully Booked Restaurant
+User Message: "Do you have a table for 10 at Ruth's Chris Steak House on December 24 at 9 PM?"
+Output:
+{
+    "restaurant_name": "Ruth's Chris Steak House",
+    "date_time": "2025-12-24 21:00",
+    "num_people": 10
+}
+
+Now, extract information from following user query:
+User Query: "{{user_message}}"
+Output:
+
