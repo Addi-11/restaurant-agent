@@ -16,7 +16,7 @@ INTENT_TO_SERVICE = {
     "reserve_restaurant": ReserveRestaurantService,
     "check_availability": CheckAvailabilityService,
     "search_restaurant": SearchRestaurantService,
-    "fetch_price": FetchPriceService
+    "fetch_price": FetchPriceService,
 }
 
 
@@ -24,7 +24,9 @@ def detect_intent(user_message):
     template = env.get_template("classify_intent.jinja2")
     prompt = template.render(user_message=user_message)
 
-    model_response = model_pipeline(prompt, do_sample=False, temperature=0.1)[0]["generated_text"]
+    model_response = model_pipeline(prompt, do_sample=False, temperature=0.1)[0][
+        "generated_text"
+    ]
     lines = model_response.strip().split("\n")
 
     for line in reversed(lines):
@@ -39,12 +41,22 @@ def detect_intent(user_message):
     logger.info("Default Intent Extracted.")
     return "general_response"
 
+
 def generate_final_response(user_message, conversation_history, tool_result):
-    context = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in conversation_history])
+    context = "\n".join(
+        [
+            f"{msg['role'].capitalize()}: {msg['content']}"
+            for msg in conversation_history
+        ]
+    )
     template = env.get_template("generate_response.jinja2")
-    prompt = template.render(conversation=context, user_message=user_message, tool_result=tool_result)
-    
-    raw_response = model_pipeline(prompt, max_new_tokens=200, do_sample=True, temperature=0.7)[0]["generated_text"]
+    prompt = template.render(
+        conversation=context, user_message=user_message, tool_result=tool_result
+    )
+
+    raw_response = model_pipeline(
+        prompt, max_new_tokens=200, do_sample=True, temperature=0.7
+    )[0]["generated_text"]
     marker = "Final Assistant Response:"
     if marker in raw_response:
         final_response = raw_response.split(marker, 1)[1].strip()
@@ -63,6 +75,8 @@ def process_chat(user_message, conversation_history):
         service = INTENT_TO_SERVICE[intent]()
         tool_result = service.process_request(user_message)
         logger.info(f"Tool result: {tool_result}")
-    
-    final_response = generate_final_response(user_message, conversation_history, tool_result)
+
+    final_response = generate_final_response(
+        user_message, conversation_history, tool_result
+    )
     return final_response
