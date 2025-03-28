@@ -2,8 +2,6 @@
 ## Goal
 Build an intelligent restaurant assistant that can handle multi-turn conversations, process user queries, and interact with external tools (e.g., restaurant databases, reservation systems) to provide real-time information.
 
-## Use case
-Virtual concierge for FoodieSpot, helping customers find restaurants, check availability, fetch menus, and make reservations via a conversational interface. A user can interact through chat, ask about restaurants near them, browse menus, and book a table—all in a single, natural conversation flow. The agent will integrate with a restaurant database, maintain user preferences, and ensure real-time updates
 
 ### State Transition Diagram
 
@@ -11,47 +9,23 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 
 ### Key Steps (agent flow)
 
-1. User initiates conversation ("What’s on the menu at Blue Tokai?")
-2. Intent detection & classification
-3. Agent calls the appropriate service (e.g., FetchMenuService)
-4. Agent responds with relevant information, fetching information from the knowledge base.
-5. User asks a follow-up question (multi-turn handled, e.g., "Do they have vegan options?")
-6. Agent maintains context & continues conversation
-7. If reservation needed, agent transitions to booking flow
-8. Booking confirmation & conversation closure
+1. **User Intent & Query Routing**  
+   - Detects user intent (`fetch_menu`, `reserve_restaurant`, etc.).  
+   - Routes queries to appropriate services (e.g., `FetchMenuService`).  
 
-### Thought Process for Foodie Spot Agent 
+2. **Context & Knowledge Retrieval**  
+   - Maintains **multi-turn conversation** (e.g., follow-ups on vegan options).  
+   - Searches **knowledge base** for restaurant data (menu, pricing, location).  
 
-1. **Intent Classification:** LLM determines intent of user message(e.g., `reserve_restaurant`, `fetch_price`, `search_restaurant`).  
+3. **Function Calling & Response Generation**  
+   - Logs key **events** (`intent_identified`, `tool_called`).  
+   - Calls **relevant tool** and generates structured responses.  
 
-6. **Prompt Routing & Parallelization:** Routes queries correctly based on intent.
+4. **TODO: Booking & Confirmation**  
+   - Handles **reservations**, asks for **confirmation**, and finalizes booking.  
 
-2. **Events Creation:**  Logs events like `intent_identified`, `tool_called`, `response_generated` for tracking.  
 
-3. **Response Format for Function Calling:** LLM outputs structured JSON with function name and parameters.  
-
-4. **Function Calling & Knowledge Base Lookup:** Calls appropriate tool (e.g., `fetch_price` tool) to retrieve structured data.  
-
-5. **Knowledge Base Search & Retrieval:** Searches and extracts exact or relaxed matches in restaurant data (menu, pricing, location).  
-
-6. **Final Response Generation:** LLM generates the final response using the information from the function and chat context.
-
-8. **TODO: Confirmation Generation:** Asks for user confirmation before final actions (e.g., booking a table).
-
-## Agent Features
-
-- Natural Language Processing for intent detection
-- Tool calling ability for real-time menu fetch, availability checks, and reservations
-- Multi-turn conversation support
-- Context retention across turns
-
-#### Knowledge Bases (KBs) required
-
-- Restaurant Menus
-- Location & Availability Data
-- Reservation System
-
-#### Tools required: Can be made better proper KB. 
+#### Current Tools:
 
 - Fetch menu
 - Check table availability
@@ -59,8 +33,7 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 - Fetch price
 - Search restaurant
 
-#### Future Scope
-
+### TODO Work
 - Pluggable model support
 - Handle vague user queries (e.g., "I need something spicy near me")
 - Support voice input in later versions
@@ -68,29 +41,7 @@ Virtual concierge for FoodieSpot, helping customers find restaurants, check avai
 - Other language integration
 - SQL knowledge base for proper tool calling.
 
-#### Future Required Integrations
-- Restaurant Database APIs (Menus, Reservations, Availability)
-- CRM System (for user preferences & personalization)
-- Payment Gateway (future expansion)
-
-### Long Term Goal
-Fully automated conversational agent.
-
-### Success Criteria
-- High accuracy in intent detection (above 90%)
-- Seamless tool integration for fetching menus, checking availability, and booking tables
-- Multi-turn context retention for better user experience
-- Minimal user corrections (spelling errors, vague queries should still work well)
-
-### Scale up / Rollout Strategy
-
-### Key Future Challenges
-
-- Handling ambiguous user queries (e.g., "Is it busy tonight?")
-- Understanding misspellings & variations of restaurant names
-- Optimizing API calls to prevent latency issues
-
-## Current Agent Limitations
+#### Current Agent Limitations
 - Spelling mistakes not tolerated for query searches
 - Restaurant names must be exact, including "The" or numbers (e.g., "The Grill House" is different from "Grill House")
 - Context retention limited to short-term memory (improving over time with training)
